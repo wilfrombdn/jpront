@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JPROn't</title>
+<meta name="description" content="JPROn't: J1939 heavy-duty truck diagnostics for Windows and Linux. Download the latest version and follow updates.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <a class="brand" href="#">JPROn't <span class="tagline">J1939 heavy-duty truck diagnostics for Windows and Linux</span></a>
+</header>
+
+<main>
+  <section id="latest">
+    <h2>Latest update</h2>
+    <div id="latest-release"><p class="muted">Loading…</p></div>
+  </section>
+
+  <section id="download">
+    <h2>Download</h2>
+    <div id="downloads"><p class="muted">Loading…</p></div>
+  </section>
+
+  <section id="features">
+    <h2>Features</h2>
+    <ul class="list">
+      <li><b>Adapters:</b> NEXIQ USB-Link 3, Noregon DLA+ 2.0 / 3.0 (any RP1210 driver)</li>
+      <li><b>Live data:</b> ~90 J1939 readings, graphs, min / max, recording</li>
+      <li><b>Faults:</b> active and past codes, lamps, plain-English meanings, freeze frames</li>
+      <li><b>Scanner:</b> ECU requests, identity, full-vehicle health report (PDF)</li>
+      <li><b>Bus tools:</b> CAN logging, playback, filters, bus load, ECU discovery</li>
+      <li><b>Records:</b> vehicle info, inspection checklists, visit history, CSV / PDF export</li>
+    </ul>
+    <p class="muted">Read-only. Never clears faults or commands anything. Not yet verified on a real adapter or vehicle.</p>
+  </section>
+
+  <section id="coming">
+    <h2>Coming next</h2>
+    <ul class="list">
+      <li><b>Fault clearing</b></li>
+      <li><b>OBD-II</b> and medium-duty vehicles</li>
+      <li><b>Multi-packet J1939</b> and component IDs</li>
+      <li><b>Network diagnostics:</b> missing ECUs, bus errors</li>
+      <li><b>Legacy:</b> J1587 / J1708, KWP2000</li>
+      <li><b>One-button</b> whole-vehicle scan</li>
+    </ul>
+  </section>
+
+  <section id="unavailable">
+    <h2>Not available</h2>
+    <p class="muted">Bidirectional and OEM-specific functions.</p>
+    <ul class="list dim cols">
+      <li>VGT actuator tests</li>
+      <li>Fan override</li>
+      <li>ABS actuation</li>
+      <li>Transmission clutch tests</li>
+      <li>DEF heater / pump tests</li>
+      <li>OEM resets</li>
+      <li>Parameter programming</li>
+      <li>Calibration flashing</li>
+      <li>ECU programming</li>
+      <li>Security access</li>
+      <li>OEM fault databases</li>
+      <li>OEM wiring diagrams</li>
+      <li>OEM repair manuals</li>
+      <li>Noregon Fault Guidance / Repair Mentor</li>
+    </ul>
+  </section>
+
+  <section id="updates">
+    <h2>Previous updates</h2>
+    <div id="releases"><p class="muted">Loading…</p></div>
+  </section>
+</main>
+
+<footer>
+  <span>&copy; <span id="year"></span> JPROn't</span>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
