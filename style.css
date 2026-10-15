@@ -57,5 +57,10 @@ section { padding: 40px 0; }
 .release:first-child { border-top: 0; padding-top: 0; }
 .release h3 { margin: 0; font-size: 17px; font-weight: 600; }
 .release time { color: var(--muted); font-size: 14px; }
-.release pre { white-space: pre-wrap; font: inherit; margin: 8px 0 0; color: var(--muted); }
+.release .notes { margin-top: 8px; }
+.release .notes ul { margin: 0; padding-left: 20px; }
+.release .notes li { margin: 4px 0; }
+.release .notes li ul { color: var(--muted); font-size: 15px; }
+.release .notes details { margin-top: 6px; color: var(--muted); }
+.release .notes summary { cursor: pointer; font-size: 14px; }
 footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }

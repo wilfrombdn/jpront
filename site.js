@@ -10,6 +10,29 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&l
 const size = (b) => (b > 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB");
 const date = (d) => new Date(d).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
 
+// Turn a release body into a scannable list: bullets as-is, prose split into sentences,
+// "Lead: a; b; c" expanded into sub-bullets. First SHOW items visible, rest collapsed.
+const SHOW = 2;
+function notes(body) {
+  let items;
+  if (/^\s*[-*] /m.test(body)) {
+    items = body.split(/\r?\n/).map((l) => l.replace(/^\s*[-*] /, "").trim()).filter(Boolean);
+  } else {
+    items = body.split(/(?<=\.)\s+/).map((x) => x.trim()).filter(Boolean);
+    if (/^JPROn't [\d.]+ for /.test(items[0] || "")) items.shift(); // title already says this
+  }
+  const li = (t) => {
+    t = t.replace(/\.$/, "");
+    const parts = t.split(/;\s*/);
+    const m = parts.length > 2 && parts[0].match(/^([^:]+):\s*(.+)$/);
+    if (!m) return `<li>${esc(t)}</li>`;
+    return `<li>${esc(m[1])}<ul>${[m[2], ...parts.slice(1)].map((x) => `<li>${esc(x)}</li>`).join("")}</ul></li>`;
+  };
+  const head = items.slice(0, SHOW).map(li).join("");
+  const rest = items.slice(SHOW).map(li).join("");
+  return `<ul>${head}</ul>` + (rest ? `<details><summary>More details</summary><ul>${rest}</ul></details>` : "");
+}
+
 $("year").textContent = new Date().getFullYear();
 
 Promise.all(PLATFORMS.filter((p) => p.available !== false).map((p) =>
@@ -47,7 +70,7 @@ Promise.all(PLATFORMS.filter((p) => p.available !== false).map((p) =>
   // Updates: every release, newest first
   all.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
   $("latest-release").innerHTML = $("releases").innerHTML = "";
-  const tpl = `<article class="release"><h3></h3><time></time><pre></pre></article>`;
+  const tpl = `<article class="release"><h3></h3><time></time><div class="notes"></div></article>`;
   $("latest-release").innerHTML = tpl;
   $("releases").innerHTML = all.slice(1).map(() => tpl).join("");
   if (all.length < 2) $("updates").hidden = true;
@@ -56,6 +79,6 @@ Promise.all(PLATFORMS.filter((p) => p.available !== false).map((p) =>
     const p = PLATFORMS.find((x) => x.name === r.platform);
     el.querySelector("h3").textContent = `${r.name || r.tag_name} · ${r.platform}${p.note ? " (early)" : ""}`;
     el.querySelector("time").textContent = date(r.published_at) + (r.prerelease ? " · pre-release" : "");
-    el.querySelector("pre").textContent = r.body || "";
+    el.querySelector(".notes").innerHTML = notes(r.body || "");
   });
 });
