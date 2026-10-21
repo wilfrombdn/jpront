@@ -30,13 +30,15 @@
       <li><b>Live data:</b> about 60 J1939 readings on Windows (about 90 on Linux), graphs of up to 8 readings at once, min / max, recording, CSV export</li>
       <li><b>Faults:</b> active and past codes, lamps, plain-English meanings, freeze frames; standard clearing on Windows</li>
       <li><b>Scanner:</b> ECU requests, identity, full-vehicle health report (PDF)</li>
-      <li><b>Module makes and models (Linux):</b> engine, transmission, ABS and dash brands shown from what each module broadcasts, e.g. Cummins, Allison, Meritor WABCO</li>
+      <li><b>Module makes and models:</b> engine, transmission, ABS and dash brands shown from what each module sends about itself, e.g. Cummins, Allison, Meritor WABCO</li>
+      <li><b>Health check:</b> one verdict for the bus (OK / check soon / needs attention) from lamps, faults, missing or dropping modules, battery, fluids and aftertreatment</li>
       <li><b>Linux direct adapter:</b> Noregon DLA+ 3.0 straight over USB, no Noregon driver needed (listen-only)</li>
       <li><b>Bus tools:</b> CAN logging, playback, filters, bus load, ECU discovery</li>
       <li><b>Records:</b> vehicle info, inspection checklists, visit history, CSV / PDF export</li>
       <li><b>Windows app:</b> light and dark mode, connection status that turns amber if the vehicle goes quiet</li>
     </ul>
     <p class="muted">Listens by default. On Windows an optional scanner asks modules for data and can clear standard fault codes (DM3 / DM11) after safety checks and a second confirmation; clearing has not been tried on a truck yet. It never commands a component. Linux only listens. Windows: tested on two school buses with a Noregon DLA+ 3.0. Linux: not yet tested on a real vehicle.</p>
+    <p class="muted">Windows and Linux share version numbers from 0.12.0 on. The Scanner and fault clearing are Windows-only for now.</p>
     <p class="muted">All versions stay below 1.0 until the app is finished and shop-ready. Releases were renumbered on Oct 20, 2026 (1.8.0 is now 0.8.0, 1.11.0 is now 0.11.0).</p>
   </section>
 
@@ -45,7 +47,6 @@
     <ul class="list">
       <li><b>Fault clearing</b> on Linux, and tried on a real truck on Windows</li>
       <li><b>Asking modules for data</b> on Linux (codes, identity on request)</li>
-      <li><b>Module makes and models</b> on Windows</li>
       <li><b>OBD-II</b> and medium-duty vehicles</li>
       <li><b>DPF regeneration and SCR status</b> readings</li>
       <li><b>Network diagnostics:</b> missing ECUs, bus errors</li>
