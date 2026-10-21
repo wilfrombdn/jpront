@@ -54,7 +54,7 @@ Promise.all(PLATFORMS.filter((p) => p.available !== false).map((p) =>
     if (p.available === false) {
       return `<div class="platform"><h3>${esc(p.name)} <span class="muted">in progress, not working yet</span></h3></div>`;
     }
-    // Newest by publish date, not by GitHub's order: versions restarted below 1.0, so 0.9.0 is newer than 1.8.0.
+    // Newest by publish date, not by GitHub's own order of the release list.
     const rel = all.filter((r) => r.platform === p.name).sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
     const latest = rel.find((r) => !r.prerelease) || rel[0];
     if (!latest) return "";
