@@ -28,7 +28,7 @@
     <ul class="list">
       <li><b>Adapters:</b> NEXIQ USB-Link 3, Noregon DLA+ 2.0 / 3.0 (any RP1210 driver)</li>
       <li><b>Live data:</b> about 60 J1939 readings on Windows (about 90 on Linux), graphs of up to 8 readings at once, min / max, recording, CSV export</li>
-      <li><b>Faults:</b> active and past codes, lamps, plain-English meanings, freeze frames</li>
+      <li><b>Faults:</b> active and past codes, lamps, plain-English meanings, freeze frames; standard clearing on Windows</li>
       <li><b>Scanner:</b> ECU requests, identity, full-vehicle health report (PDF)</li>
       <li><b>Module makes and models (Linux):</b> engine, transmission, ABS and dash brands shown from what each module broadcasts, e.g. Cummins, Allison, Meritor WABCO</li>
       <li><b>Linux direct adapter:</b> Noregon DLA+ 3.0 straight over USB, no Noregon driver needed (listen-only)</li>
@@ -36,14 +36,14 @@
       <li><b>Records:</b> vehicle info, inspection checklists, visit history, CSV / PDF export</li>
       <li><b>Windows app:</b> light and dark mode, connection status that turns amber if the vehicle goes quiet</li>
     </ul>
-    <p class="muted">Never clears faults or commands anything. Windows: tested on two school buses with a Noregon DLA+ 3.0. Linux: not yet tested on a real vehicle.</p>
+    <p class="muted">Listens by default. On Windows an optional scanner asks modules for data and can clear standard fault codes (DM3 / DM11) after safety checks and a second confirmation; clearing has not been tried on a truck yet. It never commands a component. Linux only listens. Windows: tested on two school buses with a Noregon DLA+ 3.0. Linux: not yet tested on a real vehicle.</p>
     <p class="muted">All versions stay below 1.0 until the app is finished and shop-ready. Releases were renumbered on Oct 20, 2026 (1.8.0 is now 0.8.0, 1.11.0 is now 0.11.0).</p>
   </section>
 
   <section id="coming">
     <h2>Coming next</h2>
     <ul class="list">
-      <li><b>Fault clearing</b></li>
+      <li><b>Fault clearing</b> on Linux, and tried on a real truck on Windows</li>
       <li><b>Asking modules for data</b> on Linux (codes, identity on request)</li>
       <li><b>Module makes and models</b> on Windows</li>
       <li><b>OBD-II</b> and medium-duty vehicles</li>
