@@ -30,17 +30,22 @@
       <li><b>Live data:</b> about 60 J1939 readings on Windows (about 90 on Linux), graphs of up to 8 readings at once, min / max, recording, CSV export</li>
       <li><b>Faults:</b> active and past codes, lamps, plain-English meanings, freeze frames</li>
       <li><b>Scanner:</b> ECU requests, identity, full-vehicle health report (PDF)</li>
+      <li><b>Module makes and models (Linux):</b> engine, transmission, ABS and dash brands shown from what each module broadcasts, e.g. Cummins, Allison, Meritor WABCO</li>
+      <li><b>Linux direct adapter:</b> Noregon DLA+ 3.0 straight over USB, no Noregon driver needed (listen-only)</li>
       <li><b>Bus tools:</b> CAN logging, playback, filters, bus load, ECU discovery</li>
       <li><b>Records:</b> vehicle info, inspection checklists, visit history, CSV / PDF export</li>
       <li><b>Windows app:</b> light and dark mode, connection status that turns amber if the vehicle goes quiet</li>
     </ul>
-    <p class="muted">Read-only. Never clears faults or commands anything. Not yet verified on a real adapter or vehicle.</p>
+    <p class="muted">Never clears faults or commands anything. Windows: tested on two school buses with a Noregon DLA+ 3.0. Linux: not yet tested on a real vehicle.</p>
+    <p class="muted">Versions restarted below 1.0 on Oct 20, 2026 and stay there until a public release: Linux 0.9.0 follows 1.8.0, and the next Windows version is 0.12.0.</p>
   </section>
 
   <section id="coming">
     <h2>Coming next</h2>
     <ul class="list">
       <li><b>Fault clearing</b></li>
+      <li><b>Asking modules for data</b> on Linux (codes, identity on request)</li>
+      <li><b>Module makes and models</b> on Windows</li>
       <li><b>OBD-II</b> and medium-duty vehicles</li>
       <li><b>DPF regeneration and SCR status</b> readings</li>
       <li><b>Network diagnostics:</b> missing ECUs, bus errors</li>

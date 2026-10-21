@@ -1,7 +1,7 @@
 // ---- Config: add or rename platforms here ----
 const PLATFORMS = [
   { name: "Windows", repo: "wilfrombdn/JPROnt-releases" },
-  { name: "Linux", repo: "wilfrombdn/JPROnt-Linux-releases", note: "Early version. Not all functionality works yet." },
+  { name: "Linux", repo: "wilfrombdn/JPROnt-Linux-releases", note: "Early version. Not yet tested on a real vehicle." },
 ];
 // ----------------------------------------------
 
@@ -54,7 +54,8 @@ Promise.all(PLATFORMS.filter((p) => p.available !== false).map((p) =>
     if (p.available === false) {
       return `<div class="platform"><h3>${esc(p.name)} <span class="muted">in progress, not working yet</span></h3></div>`;
     }
-    const rel = all.filter((r) => r.platform === p.name);
+    // Newest by publish date, not by GitHub's order: versions restarted below 1.0, so 0.9.0 is newer than 1.8.0.
+    const rel = all.filter((r) => r.platform === p.name).sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
     const latest = rel.find((r) => !r.prerelease) || rel[0];
     if (!latest) return "";
     const files = latest.assets.map((a) =>
