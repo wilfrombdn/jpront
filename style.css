@@ -68,14 +68,14 @@ section { padding: 40px 0; }
 .release .notes summary { cursor: pointer; font-size: 14px; }
 footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
 
-/* Masthead: the app's splash screen as a banner (dark panel, gauge mark, segmented load bar) */
-.masthead { background: #14181C; border-bottom: 1px solid #3A424B; }
+/* Masthead: the app's splash screen as a banner (gauge mark, segmented load bar) on the page background */
+.masthead { background: var(--bg); color: var(--fg); border-bottom: 1px solid var(--line); }
 .masthead-inner { max-width: 880px; margin: 0 auto; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.brand { display: flex; align-items: center; gap: 16px; text-decoration: none; color: #E8EDF2; }
+.brand { display: flex; align-items: center; gap: 16px; text-decoration: none; color: var(--fg); }
 .mark { flex: none; width: 56px; height: 56px; filter: drop-shadow(0 2px 6px rgba(0,0,0,.5)); }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
-.brand-name { font: 600 32px/1.1 "Segoe UI", system-ui, sans-serif; letter-spacing: -0.01em; color: #E8EDF2; }
-.tagline { margin-top: 4px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA5B1; }
-.platforms { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #7F8B98; white-space: nowrap; }
-.loadbar { width: min(832px, calc(100% - 48px)); margin: 0 auto 16px; height: 6px; background: repeating-linear-gradient(90deg, #C9CED4 0 14px, transparent 14px 18px); -webkit-mask: linear-gradient(90deg, #000 0 62%, rgba(0,0,0,.25) 62%); mask: linear-gradient(90deg, #000 0 62%, rgba(0,0,0,.25) 62%); }
+.brand-name { font: 600 32px/1.1 "Segoe UI", system-ui, sans-serif; letter-spacing: -0.01em; color: var(--fg); }
+.tagline { margin-top: 4px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.platforms { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.loadbar { width: min(832px, calc(100% - 48px)); margin: 0 auto 16px; height: 6px; background: repeating-linear-gradient(90deg, currentColor 0 14px, transparent 14px 18px); -webkit-mask: linear-gradient(90deg, #000 0 62%, rgba(0,0,0,.25) 62%); mask: linear-gradient(90deg, #000 0 62%, rgba(0,0,0,.25) 62%); }
 @media (max-width: 560px) { .platforms { display: none; } .brand-name { font-size: 26px; } .mark { width: 46px; height: 46px; } .tagline { font-size: 10px; } }
