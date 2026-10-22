@@ -38,8 +38,13 @@ section { padding: 40px 0; }
 .files li { border-top: 1px solid var(--line); }
 .files li:last-child { border-bottom: 1px solid var(--line); }
 .files a { display: flex; justify-content: space-between; padding: 12px 0; text-decoration: none; }
-.files a:hover span:first-child { color: var(--accent); }
-.files li:first-child { border-left: 2px solid var(--accent); padding-left: 12px; }
+.files li > a:first-child:hover span:first-child { color: var(--accent); }
+.files li { display: flex; align-items: center; gap: 16px; }
+.files li > a:first-child { flex: 1; }
+.files li.primary { border-left: 2px solid var(--accent); padding-left: 12px; }
+.files small { display: block; font-size: 12px; }
+.files a.sum { display: inline; flex: none; padding: 0; font-size: 12px; color: var(--muted); text-decoration: underline; }
+.files a.sum:hover { color: var(--fg); }
 .note { margin: 4px 0 0; font-size: 14px; color: var(--warn); }
 .list { padding-left: 18px; margin: 0 0 16px; }
 .list li { margin: 4px 0; }

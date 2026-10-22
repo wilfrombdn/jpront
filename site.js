@@ -58,8 +58,18 @@ Promise.all(PLATFORMS.filter((p) => p.available !== false).map((p) =>
     const rel = all.filter((r) => r.platform === p.name).sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
     const latest = rel.find((r) => !r.prerelease) || rel[0];
     if (!latest) return "";
-    const files = latest.assets.map((a) =>
-      `<li><a href="${esc(a.browser_download_url)}"><span>${esc(a.name)}</span><span class="muted">${size(a.size)}</span></a></li>`
+    // One row per real download; each .sha256 becomes a small "checksum" link on its file's row.
+    const sums = Object.fromEntries(latest.assets.filter((a) => /\.sha256$/.test(a.name)).map((a) => [a.name.replace(/\.sha256$/, ""), a.browser_download_url]));
+    const label = (n) => {
+      const win = /win/i.test(n);
+      const bits = /x86_64|x64|amd64/i.test(n) ? "64-bit" : /arm64|aarch64/i.test(n) ? "64-bit ARM" : /armv7|armhf|linux-arm(?!64)/i.test(n) ? "32-bit ARM" : /x86|i[36]86|ia32/i.test(n) ? "32-bit" : "";
+      const hint = !win && /x64/i.test(n) ? " (Intel / AMD PCs)" : !win && /arm64/i.test(n) ? " (Raspberry Pi, ARM)" : "";
+      return bits ? `${win ? "Windows installer" : "Linux"} · ${bits}${hint}` : n;
+    };
+    const rank = (n) => (/x64|amd64/i.test(n) ? 0 : /x86|i[36]86/i.test(n) ? 1 : 2);
+    const real = latest.assets.filter((a) => !/\.sha256$/.test(a.name)).sort((a, b) => rank(a.name) - rank(b.name));
+    const files = real.map((a, i) =>
+      `<li${i === 0 ? ' class="primary"' : ""}><a href="${esc(a.browser_download_url)}"><span>${esc(label(a.name))}<small class="muted">${esc(a.name)}</small></span><span class="muted">${size(a.size)}</span></a>${sums[a.name] ? `<a class="sum" href="${esc(sums[a.name])}" title="SHA-256 checksum to verify the download">checksum</a>` : ""}</li>`
     ).join("");
     return `<div class="platform">
       <h3>${esc(p.name)} <span class="muted">${esc(latest.tag_name)} · ${date(latest.published_at)}</span></h3>
