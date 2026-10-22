@@ -21,7 +21,7 @@ a { color: inherit; }
 main, footer { max-width: 880px; margin: 0 auto; padding: 0 24px; }
 nav a { margin-left: 20px; color: var(--muted); text-decoration: none; }
 nav a:hover { color: var(--fg); }
-main > section:first-child { padding-top: 16px; }
+main > section:first-child { padding-top: 40px; }
 h1 { font-size: clamp(40px, 8vw, 64px); line-height: 1.05; margin: 0 0 16px; letter-spacing: -0.03em; font-weight: 600; }
 h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 500; margin: 0 0 16px; }
 .hero p { font-size: 20px; color: var(--muted); margin: 0 0 32px; }
