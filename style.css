@@ -75,5 +75,5 @@ footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size
 .brand-name { font: 600 32px/1.1 "Segoe UI", system-ui, sans-serif; letter-spacing: -0.01em; color: #E8EDF2; }
 .tagline { margin-top: 4px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #9AA5B1; }
 .platforms { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #7F8B98; white-space: nowrap; }
-.loadbar { height: 6px; background: repeating-linear-gradient(90deg, #C9CED4 0 14px, transparent 14px 18px); -webkit-mask: linear-gradient(90deg, #000 0 62%, rgba(0,0,0,.25) 62%); mask: linear-gradient(90deg, #000 0 62%, rgba(0,0,0,.25) 62%); }
+.loadbar { width: min(832px, calc(100% - 48px)); margin: 0 auto 16px; height: 6px; background: repeating-linear-gradient(90deg, #C9CED4 0 14px, transparent 14px 18px); -webkit-mask: linear-gradient(90deg, #000 0 62%, rgba(0,0,0,.25) 62%); mask: linear-gradient(90deg, #000 0 62%, rgba(0,0,0,.25) 62%); }
 @media (max-width: 560px) { .platforms { display: none; } .brand-name { font-size: 26px; } .mark { width: 46px; height: 46px; } .tagline { font-size: 10px; } }
